@@ -15,11 +15,11 @@ class WoodlandAdapter constructor(
     private var woodlands: List<WoodlandModel>,
     private val listener: WoodlandListener
 ) :
-        RecyclerView.Adapter<WoodlandAdapter.MainHolder>() {
+    RecyclerView.Adapter<WoodlandAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardWoodlandBinding
-                .inflate(LayoutInflater.from(parent.context), parent, false)
+            .inflate(LayoutInflater.from(parent.context), parent, false)
 
         return MainHolder(binding)
     }
@@ -32,7 +32,7 @@ class WoodlandAdapter constructor(
     override fun getItemCount(): Int = woodlands.size
 
     class MainHolder(private val binding: CardWoodlandBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(woodland: WoodlandModel, listener: WoodlandListener) {
             binding.woodlandTitle.text = woodland.title

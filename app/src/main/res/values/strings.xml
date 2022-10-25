@@ -2,6 +2,7 @@
     <string name="app_name">Woodland</string>
     <string name="button_addWoodland">Add Woodland</string>
     <string name="hint_woodlandTitle">Woodland Title</string>
+    <string name="hint_woodlandSplash">Welcome to Woodlands</string>
     <string name="hint_woodlandDescription">Description </string>
     <string name="menu_addWoodland">Add</string>
     <string name="menu_cancelWoodland">Cancel</string>

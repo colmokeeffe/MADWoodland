@@ -1,11 +1,3 @@
 <resources>
-    <!--
-    TODO: Before you run your application, you need a Google Maps API key.
-    SHA-1 certificate fingerprint:
-    7E:D7:FA:FA:B7:BA:86:1C:12:1F:E1:B7:73:A8:46:C1:61:9E:C2:36
-
-    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
-    string in this file.
-    -->
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyC5Jy_ATcS2eGQmWcMGMIX2aerlhLzawnM</string>
 </resources>

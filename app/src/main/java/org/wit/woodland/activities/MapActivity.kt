@@ -16,8 +16,8 @@ import org.wit.woodland.R
 import org.wit.woodland.models.Location
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback,
-                                GoogleMap.OnMarkerDragListener,
-                                GoogleMap.OnMarkerClickListener {
+    GoogleMap.OnMarkerDragListener,
+    GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
     var location = Location()

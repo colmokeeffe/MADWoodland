@@ -59,7 +59,7 @@ class WoodlandActivity : AppCompatActivity() {
             woodland.description = binding.woodlandDescription.text.toString()
             if (woodland.title.isEmpty()) {
                 Snackbar.make(it,R.string.enter_woodland_title, Snackbar.LENGTH_LONG)
-                        .show()
+                    .show()
             } else {
                 if (edit) {
                     app.woodlands.update(woodland.copy())
@@ -121,8 +121,8 @@ class WoodlandActivity : AppCompatActivity() {
                             i("Got Result ${result.data!!.data}")
                             woodland.image = result.data!!.data!!
                             Picasso.get()
-                                   .load(woodland.image)
-                                   .into(binding.woodlandImage)
+                                .load(woodland.image)
+                                .into(binding.woodlandImage)
                             binding.chooseImage.setText(R.string.change_woodland_image)
                         } // end of if
                     }

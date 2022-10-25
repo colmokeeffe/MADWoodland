@@ -11,8 +11,8 @@ import java.util.*
 
 const val JSON_FILE = "woodlands.json"
 val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
-                 .registerTypeAdapter(Uri::class.java, UriParser())
-                 .create()
+    .registerTypeAdapter(Uri::class.java, UriParser())
+    .create()
 val listType: Type = object : TypeToken<ArrayList<WoodlandModel>>() {}.type
 
 fun generateRandomId(): Long {
