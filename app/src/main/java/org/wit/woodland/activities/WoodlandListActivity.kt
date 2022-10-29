@@ -8,6 +8,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import org.wit.woodland.R
 import org.wit.woodland.adapters.WoodlandAdapter
 import org.wit.woodland.adapters.WoodlandListener
@@ -53,6 +54,14 @@ class WoodlandListActivity : AppCompatActivity(), WoodlandListener/*, MultiplePe
             R.id.item_map -> {
                 val launcherIntent = Intent(this, WoodlandMapsActivity::class.java)
                 mapIntentLauncher.launch(launcherIntent)
+            }
+            R.id.item_logout -> {
+                val launcherIntent = Intent(this, LoginActivity::class.java)
+                refreshIntentLauncher.launch(launcherIntent)
+            }
+            R.id.item_edit -> {
+                val launcherIntent = Intent(this, SettingsActivity::class.java)
+                refreshIntentLauncher.launch(launcherIntent)
             }
         }
         return super.onOptionsItemSelected(item)

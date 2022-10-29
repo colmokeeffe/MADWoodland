@@ -37,7 +37,7 @@ class WoodlandAdapter constructor(
         fun bind(woodland: WoodlandModel, listener: WoodlandListener) {
             binding.woodlandTitle.text = woodland.title
             binding.woodlandDescription.text = woodland.description
-            Picasso.get().load(woodland.image).resize(200,200).into(binding.imageIcon)
+            Picasso.get().load(woodland.image).resize(300,300).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onWoodlandClick(woodland) }
         }
     }

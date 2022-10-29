@@ -37,16 +37,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-      <ImageView
-          android:id="@+id/currentImage"
-          android:layout_width="121dp"
-          android:layout_height="98dp"
-          android:layout_marginEnd="16dp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          tools:srcCompat="@tools:sample/backgrounds/scenic"
-          android:contentDescription="@string/woodland_image_placeholder" />
 
       <TextView
           android:id="@+id/currentTitle"
@@ -54,7 +44,6 @@
           android:layout_height="21dp"
           android:text="@string/woodland_title_placeholder"
           app:layout_constraintBottom_toTopOf="@+id/currentDescription"
-          app:layout_constraintEnd_toStartOf="@+id/currentImage"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintVertical_bias="0.722" />
@@ -66,7 +55,6 @@
           android:layout_marginBottom="24dp"
           android:text="@string/woodland_description_placeholder"
           app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toStartOf="@+id/currentImage"
           app:layout_constraintHorizontal_bias="0.521"
           app:layout_constraintStart_toStartOf="parent" />
 

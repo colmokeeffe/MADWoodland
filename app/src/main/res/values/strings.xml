@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Woodland</string>
+    <string name="app_name">[Woodlands]</string>
     <string name="button_addWoodland">Add Woodland</string>
     <string name="hint_woodlandTitle">Woodland Title</string>
     <string name="hint_woodlandSplash">Welcome to Woodlands</string>
@@ -14,8 +14,13 @@
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Map</string>
     <string name="menu_deleteWoodland">Delete</string>
-    <string name="title_activity_woodland_maps">Map of All Woodlands </string>
+    <string name="title_activity_woodland_maps">Woodlands of </string>
     <string name="woodland_image_placeholder">Woodland Image</string>
     <string name="woodland_title_placeholder">Woodland Title</string>
-    <string name="woodland_description_placeholder">Woodland Description</string>
+    <string name="woodland_description_placeholder">Woodland Location</string>
+    <string name="item_delete_all_woodlands">Delete All</string>
+    <string name="title_activity_login"> Signup/Login to Woodlands</string>
+    <string name="menu_showMap">Show Map</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_edit">Edit User</string>
 </resources>

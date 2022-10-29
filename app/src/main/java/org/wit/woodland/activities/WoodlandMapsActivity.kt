@@ -7,6 +7,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 import org.wit.woodland.databinding.ActivityWoodlandMapsBinding
 import org.wit.woodland.databinding.ContentWoodlandMapsBinding
 import org.wit.woodland.main.MainApp
@@ -23,6 +24,11 @@ class WoodlandMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListene
     app = application as MainApp
     binding = ActivityWoodlandMapsBinding.inflate(layoutInflater)
     setContentView(binding.root)
+    binding.toolbar.title = title
+    val user = FirebaseAuth.getInstance().currentUser
+    if (user != null) {
+      binding.toolbar.title = "${title}: ${user.email}"
+    }
     //binding.toolbar.title = title
     setSupportActionBar(binding.toolbar)
     contentBinding = ContentWoodlandMapsBinding.bind(binding.root)
@@ -39,13 +45,14 @@ class WoodlandMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListene
     app.woodlands.findAll().forEach {
       val loc = LatLng(it.lat, it.lng)
       val options = MarkerOptions().title(it.title).position(loc)
-      map.addMarker(options).tag = it.id
+      map.addMarker(options)?.tag = it.id
       map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
     }
   }
 
   override fun onMarkerClick(marker: Marker): Boolean {
     contentBinding.currentTitle.text = marker.title
+    contentBinding.currentDescription.text = marker.position.toString()
     return false
   }
 
