@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "190483581593",
+    "project_id": "woodlands-365021",
+    "storage_bucket": "woodlands-365021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190483581593:android:35859badf9fe6fb55a8608",
+        "android_client_info": {
+          "package_name": "org.wit.woodland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190483581593-6v0kb4ikmegbuc0boj3h1flqboa960b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsQg72LUouY6MpDLQHh0tbZyZmMcq2u8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190483581593-6v0kb4ikmegbuc0boj3h1flqboa960b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
