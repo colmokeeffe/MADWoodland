@@ -1,10 +1,9 @@
 package org.wit.woodland.activities
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import org.wit.woodland.R
-import com.google.firebase.auth.FirebaseAuth
-import timber.log.Timber.i
+import androidx.appcompat.app.AppCompatActivity
+
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
