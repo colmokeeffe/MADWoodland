@@ -1,11 +1,9 @@
 package org.wit.woodland.activities
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 import org.wit.woodland.R
-import android.app.Activity
+import com.google.firebase.auth.FirebaseAuth
 import timber.log.Timber.i
 
 class SettingsActivity : AppCompatActivity() {
@@ -14,25 +12,42 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
     }
 }
-/* THIS IS NOT WORKING ----COMMENT OUT
-        val user = FirebaseAuth.getInstance().currentUser!!.uid
-        if (user != null) {
-            updateUserEmail.setText(FirebaseAuth.getInstance().currentUser?.email)
-            updateUserPassword.setText("********")
+
+/*THIS IS NOT WORKING, LOOK AT IT AGAIN LATER ----COMMENT OUT
+
+val user = FirebaseAuth.getInstance().currentUser
+
+
+fun doUpdateEmail(email: String) {
+    user!!.updateEmail("user@google.com")
+        .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                i("User email address updated.")
         } else {
-            i("Not logged in")
+            i("Login failed:")
+            }
+}
+
+
+    val newPassword = "SOME-SECURE-PASSWORD"
+    fun doUpdatePassword(password: String) {
+        user!!.updatePassword(newPassword)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    i("User password address updated.")
+                }
+            }
+
+
+        fun doDeleteUser() {
+            user.delete()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        i("User deleted.")
+                    }
+                }
         }
-
-        save_user_settings.setOnClickListener() {
-            val user = FirebaseAuth.getInstance().currentUser
-            user!!.updateEmail(updateUserEmail.toString())
-            user!!.updatePassword(updateUserPassword.toString())
-            i(user.email)
-
-            startActivity(Intent(this, WoodlandListActivity::class.java))
-
-        }
+        //ADD IN STATISTICS, GRAPHS??
     }
-    //ADD IN STATISTICS
-    //CHANGE USER NAME, TIE IN WITH THE SIGNUP ACTIVITY
+
 */
