@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/item_save"
+        android:title="@string/menu_saveWoodland"
+        app:showAsAction="always"/>
+    <item
+        android:visible="false"
+        android:id="@+id/item_delete"
+        android:title="@string/menu_deleteWoodland"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/item_cancel"
+        android:title="@string/menu_cancelWoodland"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/item_share"
+        android:visible="false"
+        android:title="@string/menu_shareWoodland"
+        app:showAsAction="always"/>
+</menu>

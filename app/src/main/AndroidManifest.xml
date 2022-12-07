@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.wit.woodland">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_COURSE_LOCATION"/>
+
+
+
+    <application
+        android:name=".main.MainApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_woodland"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_woodland_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".views.splash.SplashView"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity android:name=".views.settings.SettingsView"
+            android:label="@string/title_activity_settings">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".views.woodlandlist.WoodlandListView" />
+        </activity>
+
+        <activity android:name=".views.login.LoginView"
+            android:label="@string/title_activity_login"
+            android:launchMode="singleTop"/>
+
+        <activity
+            android:name=".views.location.EditLocationView"
+            android:label="@string/title_activity_location">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.woodland.WoodlandView" />
+        </activity>
+
+        <activity android:name=".views.woodland.WoodlandView"
+            android:label="@string/title_activity_woodland">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.woodlandlist.WoodlandListView" />
+        </activity>
+
+        <activity android:name=".views.woodlandlist.WoodlandListView"
+            android:label="@string/title_activity_woodland_list"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".views.favourites.FavouriteView"
+            android:label="@string/title_activity_favourite_view"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.woodlandlist.WoodlandListView" />
+        </activity>
+
+        <activity
+            android:name=".views.map.WoodlandMapView"
+            android:label="@string/title_activity_woodland_maps"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.woodlandlist.WoodlandListView" />
+        </activity>
+    </application>
+
+</manifest>

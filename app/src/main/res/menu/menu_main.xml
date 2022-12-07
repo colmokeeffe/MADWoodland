@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/app_bar_search"
+        android:visible="false"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/search"
+        android:text="@+id/search_src_text"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/item_add"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/menu_addWoodland"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_map"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        android:title="@string/menu_showMap"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_favourites"
+        android:icon="@drawable/ic_favourite_star"
+        android:title="@string/menu_showFavourites"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_settings"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/menu_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/item_logout"
+        android:title="@string/menu_logout"
+        android:visible="true"
+        app:showAsAction="never" />
+</menu>
