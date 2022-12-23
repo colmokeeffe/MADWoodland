@@ -64,7 +64,7 @@ The Splash screen is the first screen visible to the user when the application i
 Early iterations of this app utilised read/write to JSON file. Contents could be viewed via device file explorer inside Android Studio. <br>
 
 ## UML Diagram
-
+<img src="/app/src/UML/UML.jpg" width="800" height="500"/>
 
 ## Developer Experience (DX)
 * Good use of Helpers for images and swipe functionality
