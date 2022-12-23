@@ -9,17 +9,16 @@ import kotlinx.android.synthetic.main.card_woodland.view.*
 import org.wit.woodland.R
 import org.wit.woodland.models.WoodlandModel
 
-interface FavouriteListener {
+interface FavouriteListener
+{
     fun onWoodlandClick(woodland: WoodlandModel)
     fun onFavouriteClick(woodland: WoodlandModel,favourite: Boolean)
 }
 
-class FavouriteAdapter constructor(
-    private var woodlands: ArrayList<WoodlandModel>,
-    private val listener: FavouriteListener
-) :
-    RecyclerView.Adapter<FavouriteAdapter.MainHolder>() {
-
+class FavouriteAdapter constructor
+    (private var woodlands: ArrayList<WoodlandModel>, private val listener: FavouriteListener) :
+    RecyclerView.Adapter<FavouriteAdapter.MainHolder>()
+{
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
             LayoutInflater.from(parent?.context).inflate(
@@ -27,11 +26,11 @@ class FavouriteAdapter constructor(
                 parent,
                 false
             )
-
         )
     }
 
-    override fun onBindViewHolder(holder: MainHolder, position: Int) {
+    override fun onBindViewHolder(holder: MainHolder, position: Int)
+    {
         val woodland = woodlands[holder.adapterPosition]
         holder.bind(woodland,listener)
     }
@@ -39,11 +38,10 @@ class FavouriteAdapter constructor(
 
     override fun getItemCount(): Int = woodlands.size
 
-    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-
-
-        fun bind(woodland: WoodlandModel, listener: FavouriteListener) {
+    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView)
+    {
+        fun bind(woodland: WoodlandModel, listener: FavouriteListener)
+        {
             var favourite = woodland.favourite
             if(favourite) {
                 itemView.favouriteButton.setImageResource(android.R.drawable.btn_star_big_on);
@@ -69,7 +67,6 @@ class FavouriteAdapter constructor(
                     listener.onFavouriteClick(woodland, favourite)
                 }
             }
-
         }
     }
 }

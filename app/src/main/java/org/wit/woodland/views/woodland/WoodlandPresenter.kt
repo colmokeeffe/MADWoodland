@@ -21,18 +21,19 @@ import org.wit.woodland.views.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WoodlandPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
-
+class WoodlandPresenter(view: BaseView): BasePresenter(view), AnkoLogger
+{
     val sdf = SimpleDateFormat("dd/MMM/yyyy")
     var woodland = WoodlandModel()
-    var defaultLocation = Location(52.245696, -7.139102, 15f)
+    var defaultLocation = Location(52.245696, -7.139102, 5f)
     var edit = false;
     var map: GoogleMap? = null
     val locationRequest = createDefaultLocationRequest()
     var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
     var locationManuallyChanged = false;
 
-    init {
+    init
+    {
         if (view.intent.hasExtra("woodland_edit")) {
             edit = true
             woodland = view.intent.extras?.getParcelable<WoodlandModel>("woodland_edit")!!
@@ -45,15 +46,18 @@ class WoodlandPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
     }
 
     override fun doRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (isPermissionGranted(requestCode, grantResults)) {
+        if (isPermissionGranted(requestCode, grantResults))
+        {
             doSetCurrentLocation()
-        } else {
-            // permissions denied, so use the default location
+        }
+        else
+        {
             locationUpdate(defaultLocation)
         }
     }
 
-    fun doAddOrSave(title: String, description: String, notes: String) {
+    fun doAddOrSave(title: String, description: String, notes: String)
+    {
         woodland.title = title
         woodland.description = description
         woodland.notes = notes
@@ -69,26 +73,29 @@ class WoodlandPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
         }
     }
 
-    fun doCancel() {
+    fun doCancel()
+    {
         view?.finish()
     }
 
-    fun doShareWoodland(){
+    fun doShareWoodland()
+    {
         view?.doShareWoodland(woodland)
     }
 
-    fun doDelete() {
+    fun doDelete()
+    {
         app.woodlands.delete(woodland)
         view?.finish()
     }
 
-    fun doSelectImage() {
-        view?.let {
-            showImagePicker(view!!, IMAGE_REQUEST)
-        }
+    fun doSelectImage()
+    {
+        view?.let {showImagePicker(view!!, IMAGE_REQUEST)}
     }
 
-    fun loadImages(){
+    fun loadImages()
+    {
         doAsync{
             val images = woodland.images
             uiThread{
@@ -98,37 +105,73 @@ class WoodlandPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
     }
 
 
-    fun doCheckVisited(isChecked: Boolean) {
+    fun doCheckVisited(isChecked: Boolean)
+    {
         var res = "";
         if (isChecked) {
             woodland.visited = true
             woodland.date = sdf.format(Date())
             res = "Date Visited: ${woodland.date}"
-        } else {
+        }
+        else
+        {
             woodland.visited = false
             woodland.date = ""
         }
         view?.showVisitDate(res)
-
     }
 
-    fun doDeleteImage(image: String){
+    fun doCheckCarpark(isChecked: Boolean)
+    {
+        woodland.carpark = isChecked
+    }
+
+    fun doCheckShop(isChecked: Boolean)
+    {
+        woodland.shop = isChecked
+    }
+
+    fun doCheckConifer(isChecked: Boolean)
+    {
+        woodland.rb_conifer = isChecked
+    }
+
+    fun doCheckBroadleaf(isChecked: Boolean)
+    {
+        woodland.rb_broadleaf = isChecked
+    }
+
+    fun doCheckMixed(isChecked: Boolean)
+    {
+        woodland.rb_mixed = isChecked
+    }
+
+    fun doCheckToilets(isChecked: Boolean)
+    {
+        woodland.toilets = isChecked
+    }
+
+    fun doDeleteImage(image: String)
+    {
         woodland.images.remove(image)
         loadImages()
     }
 
-    fun doSetLocation() {
+    fun doSetLocation()
+    {
         locationManuallyChanged = true;
         view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(woodland.location.lat, woodland.location.lng, woodland.location.zoom))
     }
 
-    fun cacheWoodland (title: String, description: String, notes: String) {
+    fun cacheWoodland (title: String, description: String, notes: String)
+    {
         woodland.title = title;
         woodland.description = description;
         woodland.notes = notes;
     }
 
-    override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent)
+    {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 woodland.images.add(data.getData().toString())
@@ -142,15 +185,17 @@ class WoodlandPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
         }
     }
 
-    fun doConfigureMap(m: GoogleMap) {
+    fun doConfigureMap(m: GoogleMap)
+    {
         info("Running WoodlandPresenter doConfigureMap")
         map = m
         locationUpdate(woodland.location)
     }
 
-    fun locationUpdate(location: Location) {
+    fun locationUpdate(location: Location)
+    {
         woodland.location = location
-        woodland.location.zoom = 15f
+        woodland.location.zoom = 10f
         map?.clear()
         map?.uiSettings?.setZoomControlsEnabled(true)
         val options = MarkerOptions().title(woodland.title).position(LatLng(woodland.location.lat, woodland.location.lng))
@@ -160,22 +205,28 @@ class WoodlandPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
     }
 
     @SuppressLint("MissingPermission")
-    fun doSetCurrentLocation() {
+    fun doSetCurrentLocation()
+    {
         locationService.lastLocation.addOnSuccessListener {
             locationUpdate(Location(it.latitude, it.longitude))
         }
     }
 
-    fun doSetRating(rating: Float){
+    fun doSetRating(rating: Float)
+    {
         woodland.rating = rating
     }
 
 
+
     @SuppressLint("MissingPermission")
-    fun doResartLocationUpdates() {
-        var locationCallback = object : LocationCallback() {
+    fun doResartLocationUpdates()
+    {
+        var locationCallback = object : LocationCallback()
+        {
             override fun onLocationResult(locationResult: LocationResult) {
-                if (locationResult != null && locationResult.locations != null) {
+                if (locationResult != null && locationResult.locations != null)
+                {
                     val l = locationResult.locations.last()
                     if (!locationManuallyChanged) {
                         locationUpdate(Location(l.latitude, l.longitude))
@@ -183,7 +234,8 @@ class WoodlandPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
                 }
             }
         }
-        if (!edit) {
+        if (!edit)
+        {
             locationService.requestLocationUpdates(locationRequest, locationCallback, null)
         }
     }

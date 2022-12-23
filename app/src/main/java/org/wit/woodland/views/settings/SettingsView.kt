@@ -5,44 +5,44 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_settings.*
-import kotlinx.android.synthetic.main.activity_settings.toolbar
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import org.wit.woodland.R
 import org.wit.woodland.views.BaseView
 
 
-class SettingsView : BaseView(), AnkoLogger {
-
+class SettingsView : BaseView(), AnkoLogger
+{
     lateinit var presenter: SettingsPresenter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    //lateinit var pieChart: PieChart
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         super.init(toolbar, true)
         presenter = initPresenter(SettingsPresenter(this)) as SettingsPresenter
         val user = FirebaseAuth.getInstance().currentUser
-
-        if(user != null) {
+        if(user != null)
+        {
             settingsEmail.setText(user.email)
-
         }
-
         presenter.doShowStats()
+        //presenter.doShowPieChart()
 
-        btnUpdate.setOnClickListener(){
-
+    btnUpdate.setOnClickListener() {
             val email = settingsEmail.text.toString()
             val password = settingsPassword.text.toString()
             if(email.length>0 && email != user?.email) {
                 user!!.updateEmail(email)
                     .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
+                        if (task.isSuccessful)
+                        {
                             toast("User email address updated.")
                         }
                     }
             }
-            if(password.length>0) {
+            if(password.length>0)
+            {
                 user!!.updatePassword(password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
@@ -53,8 +53,11 @@ class SettingsView : BaseView(), AnkoLogger {
 
         }
     }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item?.itemId) {
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    {
+        when (item.itemId) {
+            R.id.item_home -> presenter.homeView()
             R.id.item_add -> presenter.doAddWoodland()
             R.id.item_settings -> presenter.doSettings()
             R.id.item_map -> presenter.doShowWoodlandsMap()
@@ -64,19 +67,22 @@ class SettingsView : BaseView(), AnkoLogger {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean
+    {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun showStats (stats: String) {
+    override fun showStats (stats: String)
+    {
         userStats.setText(stats)
     }
 
-    override fun onBackPressed() {
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed()
+    {
         presenter.doCancel()
     }
-
 
 }
 

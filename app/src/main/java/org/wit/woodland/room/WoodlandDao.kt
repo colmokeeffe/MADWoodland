@@ -3,9 +3,8 @@ package org.wit.woodland.room
 import androidx.room.*
 import org.wit.woodland.models.WoodlandModel
 
-@Dao
-interface WoodlandDao {
-
+@Dao interface WoodlandDao
+{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun create(woodland: WoodlandModel)
 

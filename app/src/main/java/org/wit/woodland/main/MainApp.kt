@@ -5,7 +5,7 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.woodland.models.*
 import org.wit.woodland.models.firebase.WoodlandFireStore
-import org.wit.woodland.models.room.WoodlandStoreRoom
+
 
 class MainApp : Application(), AnkoLogger {
 

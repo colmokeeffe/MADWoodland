@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.wit.woodland">
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_COURSE_LOCATION"/>
-
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".main.MainApp"
+        android:foregroundServiceType="location"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_woodland"
+        android:icon="@mipmap/woodlogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_woodland_round"
+        android:roundIcon="@mipmap/woodlogo"
         android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -22,23 +23,20 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-
-
-        <activity android:name=".views.settings.SettingsView"
-            android:label="@string/title_activity_settings">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".views.woodlandlist.WoodlandListView" />
-        </activity>
-
         <activity android:name=".views.login.LoginView"
             android:label="@string/title_activity_login"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
         <activity
             android:name=".views.location.EditLocationView"
@@ -75,6 +73,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.woodlandlist.WoodlandListView" />
         </activity>
-    </application>
 
+        <activity
+            android:name=".views.settings.SettingsView"
+            android:label="@string/title_activity_settings"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.woodlandlist.WoodlandListView" />
+        </activity>
+    </application>
 </manifest>

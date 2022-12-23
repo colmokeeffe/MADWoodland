@@ -9,9 +9,15 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/search"
         android:text="@+id/search_src_text"
+        android:inputType="textCapSentences"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom"
         />
+
+    <item
+        android:id="@+id/item_home"
+        android:title="@string/menu_goHome"
+        app:showAsAction="never"/>
     <item
         android:id="@+id/item_add"
         android:icon="@android:drawable/ic_menu_add"

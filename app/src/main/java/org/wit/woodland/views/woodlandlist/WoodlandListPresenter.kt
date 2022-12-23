@@ -10,13 +10,15 @@ import org.wit.woodland.views.BaseView
 import org.wit.woodland.views.VIEW
 
 
-class WoodlandListPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
-
-    fun doAddWoodland() {
+class WoodlandListPresenter(view: BaseView): BasePresenter(view), AnkoLogger
+{
+    fun doAddWoodland()
+    {
         view?.navigateTo(VIEW.WOODLAND)
     }
 
-    fun doDeleteWoodland(id: String){
+    fun doDeleteWoodland(id: String)
+    {
         var woodland = app.woodlands.findByFbId(id)
         if(woodland != null) {
             app.woodlands.delete(woodland)
@@ -24,11 +26,13 @@ class WoodlandListPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
         loadWoodlands()
     }
 
-    fun doShowFavourites(){
+    fun doShowFavourites()
+    {
         view?.navigateTo(VIEW.FAVOURITES)
     }
 
-    fun doReturnResults(text: String){
+    fun doReturnResults(text: String)
+    {
         doAsync{
             val woodlands = app.woodlands.findSearchResults(text)
             uiThread{
@@ -37,30 +41,46 @@ class WoodlandListPresenter(view: BaseView): BasePresenter(view), AnkoLogger {
         }
     }
 
-    fun doFavourite(woodland: WoodlandModel, favourite: Boolean){
+    fun doFavourite(woodland: WoodlandModel, favourite: Boolean)
+    {
         woodland.favourite = favourite
         app.woodlands.setFavourite(woodland)
     }
 
-    fun doEditWoodland(woodland: WoodlandModel) {
+    fun doEditWoodland(woodland: WoodlandModel)
+    {
         view?.navigateTo(VIEW.WOODLAND,0 ,"woodland_edit", woodland)
     }
 
-    fun doLogout() {
+    /*fun doCancel(){
+        view?.finish()
+    }
+     */
+
+    fun loadAdder()
+    {
+    view?.navigateTo(VIEW.WOODLAND)
+    }
+
+    fun doLogout()
+    {
         FirebaseAuth.getInstance().signOut()
         app.woodlands.clear()
         view?.navigateTo(VIEW.LOGIN)
     }
 
-    fun doSettings(){
+    fun doSettings()
+    {
         view?.navigateTo(VIEW.SETTINGS)
     }
 
-    fun doShowWoodlandsMap() {
-        view?.navigateTo(VIEW.MAPS)
+    fun doShowWoodlandsMap()
+    {
+        view?.navigateTo(VIEW.MAP)
     }
 
-    fun loadWoodlands(){
+    fun loadWoodlands()
+    {
         doAsync{
             val woodlands = app.woodlands.findAll()
             uiThread{

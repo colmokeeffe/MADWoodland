@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#4c90af</color>
-    <color name="colorInactive">#C3CED3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorInactive">#8F9091</color>
+    <color name="colorActive">#EAECEC</color>
     <color name="ic_launcher_woodland_background">#00755e</color>
 </resources>

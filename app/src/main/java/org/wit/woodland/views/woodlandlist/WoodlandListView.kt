@@ -2,86 +2,102 @@ package org.wit.woodland.views.woodlandlist
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.android.synthetic.main.activity_woodland_list.*
-import kotlinx.android.synthetic.main.card_woodland.*
 import org.jetbrains.anko.info
 import org.wit.woodland.R
 import org.wit.woodland.models.WoodlandModel
 import org.wit.woodland.utils.SwipeToDeleteCallback
+import org.wit.woodland.utils.SwipeToEdit
 import org.wit.woodland.views.BaseView
 
 
-
-class WoodlandListView : BaseView(), WoodlandListener {
-
+class WoodlandListView : BaseView(), WoodlandListener
+{
     lateinit var presenter: WoodlandListPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_woodland_list)
         super.init(toolbar, false)
         presenter = initPresenter(WoodlandListPresenter(this)) as WoodlandListPresenter
-
-
         setSwipeRefresh()
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         presenter.loadWoodlands()
 
+        adder.setOnClickListener {
+            presenter.loadAdder()
+        }
 
-        val swipeDeleteHandler = object : SwipeToDeleteCallback(this) {
+        val swipeEditHandler = object : SwipeToEdit(this)
+        {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val adapter = recyclerView.adapter as WoodlandAdapter
+                val woodlandSwiped =
+                    presenter.app.woodlands.findByFbId(viewHolder.itemView.tag as String)
+                onWoodlandClick(woodlandSwiped!!)
+            }
+        }
+        val itemTouchEditHelper = ItemTouchHelper(swipeEditHandler)
+        itemTouchEditHelper.attachToRecyclerView(recyclerView)
+
+        val swipeDeleteHandler = object : SwipeToDeleteCallback(this)
+        {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int)
+            {
                 deleteWoodland(viewHolder.itemView.tag as String)
             }
         }
         val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
         itemTouchDeleteHelper.attachToRecyclerView(recyclerView)
-
-
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean
+    {
         menuInflater.inflate(R.menu.menu_main, menu)
         menu.getItem(0).setVisible(true)
-        //return super.onCreateOptionsMenu(menu)
-
         val searchItem = menu.findItem(R.id.app_bar_search)
         val searchView = searchItem?.actionView as SearchView
-
         searchView.queryHint = getString(R.string.search)
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
+        {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 info("Search has been submitted" + query)
-                if (query != null) {
+                if (query != null)
+                {
                     presenter.doReturnResults(query)
                 }
                 return true
             }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null) {
-                    //presenter.doReturnResults(newText)
-                    //TODO("Not yet implemented")
+
+            override fun onQueryTextChange(newText: String?): Boolean
+            {
+                if (newText != null)
+                {
+                    presenter.doReturnResults(newText)
                 }
                 return true
             }
         })
-        searchView.setOnCloseListener(object : SearchView.OnCloseListener{
-            override fun onClose(): Boolean {
+
+        searchView.setOnCloseListener(object : SearchView.OnCloseListener
+        {
+            override fun onClose(): Boolean
+            {
                 presenter.loadWoodlands()
                 return false
             }
         })
-
         return super.onCreateOptionsMenu(menu)
     }
+
 
 
 

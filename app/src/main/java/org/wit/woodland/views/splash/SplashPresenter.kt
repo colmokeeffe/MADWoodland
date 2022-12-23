@@ -4,10 +4,11 @@ import org.wit.woodland.views.BasePresenter
 import org.wit.woodland.views.BaseView
 import org.wit.woodland.views.VIEW
 
-class SplashPresenter(view: BaseView): BasePresenter(view) {
+class SplashPresenter(view: BaseView): BasePresenter(view)
+{
 
-
-    fun doShowLogin(){
+    fun doShowLogin()
+    {
         view?.navigateTo(VIEW.LOGIN)
     }
 }

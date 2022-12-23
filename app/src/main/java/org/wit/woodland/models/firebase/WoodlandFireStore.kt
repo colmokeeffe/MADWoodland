@@ -34,10 +34,6 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
         return favourites
     }
 
-    override fun findByFbId(id: String): WoodlandModel? {
-        val foundWoodland: WoodlandModel? = woodlands.find { p -> p.fbId === id}
-        return foundWoodland
-    }
 
     override fun setFavourite(woodland: WoodlandModel) {
         var foundWoodland: WoodlandModel? = woodlands.find { p -> p.fbId == woodland.fbId }
@@ -51,6 +47,36 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
         var count = 0
         for(woodland in woodlands){
             if(woodland.visited ==true){
+                count ++
+            }
+        }
+        return count
+    }
+
+    override fun countConifer(): Int {
+        var count = 0
+        for(woodland in woodlands){
+            if(woodland.rb_conifer ==true){
+                count ++
+            }
+        }
+        return count
+    }
+
+    override fun countMixed(): Int {
+        var count = 0
+        for(woodland in woodlands){
+            if(woodland.rb_mixed ==true){
+                count ++
+            }
+        }
+        return count
+    }
+
+    override fun countBroadleaf(): Int {
+        var count = 0
+        for(woodland in woodlands){
+            if(woodland.rb_broadleaf ==true){
                 count ++
             }
         }
@@ -72,6 +98,11 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
         }
     }
 
+    override fun findByFbId(id: String): WoodlandModel? {
+        val foundWoodland: WoodlandModel? = woodlands.find { p -> p.fbId === id}
+        return foundWoodland
+    }
+
     override fun update(woodland: WoodlandModel) {
         var foundWoodland: WoodlandModel? = woodlands.find { p -> p.fbId == woodland.fbId }
         if (foundWoodland != null) {
@@ -82,6 +113,13 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
             foundWoodland.location = woodland.location
             foundWoodland.notes = woodland.notes
             foundWoodland.visited = woodland.visited
+            foundWoodland.carpark = woodland.carpark
+            foundWoodland.shop = woodland.shop
+            foundWoodland.rb_conifer = woodland.rb_conifer
+            foundWoodland.rb_mixed = woodland.rb_mixed
+            foundWoodland.rb_broadleaf = woodland.rb_broadleaf
+            foundWoodland.items = woodland.items
+            foundWoodland.toilets = woodland.toilets
             foundWoodland.date = woodland.date
         }
         woodland.images.forEach{
@@ -107,7 +145,7 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
             override fun onCancelled(dataSnapshot: DatabaseError) {
             }
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                dataSnapshot!!.children.mapNotNullTo(woodlands) { it.getValue<WoodlandModel>(WoodlandModel::class.java) }
+                dataSnapshot.children.mapNotNullTo(woodlands) { it.getValue<WoodlandModel>(WoodlandModel::class.java) }
                 woodlandsReady()
             }
         }
@@ -117,6 +155,10 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
         woodlands.clear()
         db.child("users").child(userId).child("woodlands").addListenerForSingleValueEvent(valueEventListener)
     }
+
+
+
+
 
     fun updateImage(woodland: WoodlandModel, image:String) {
         var index = woodland.images.indexOf(image)
