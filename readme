@@ -1,12 +1,12 @@
-# [Woodland] - Technical Report<br>
+[Woodland] - Technical Report
 
-Mobile Application Development - Assignment Two<br>
+Mobile Application Development - Assignment Two
 
-A mobile application created using Android Studio and written in Kotlin using Model View Presenter (MVP) design<br>
+A mobile application created using Android Studio and written in Kotlin using Model View Presenter (MVP) design
 
 
 ---
-## Features
+Features
 
 - Full CRUD Functionality
 - Model View Presenter Design Pattern (MVP)
@@ -19,12 +19,12 @@ A mobile application created using Android Studio and written in Kotlin using Mo
 - Google maps implementation
 
 ---
-## Installation
+Installation
 
-To run this project yourself: <br>
+To run this project yourself: 
 
-This project repo does not include the **google-services.json** file<br>
-You will need to connect this app to your own Firebase Console App for it to build and run.<br>
+This project repo does not include the **google-services.json** file
+You will need to connect this app to your own Firebase Console App for it to build and run
 
 1. Clone this repository and import into Android Studio <br>
 2. Updates may be required, check the build log
@@ -33,13 +33,13 @@ You will need to connect this app to your own Firebase Console App for it to bui
 
 
 ---
-## UX Design
+UX Design
 The objective is for the user to log woods that they have visited .
 They can log its location, amenities, add in notes, and give it a woodland 1-5 rating.
 There is a share feature to share each woods details (title, description and location) with friends.
 They can set their favourites, edit each wood, and view their locations on the map
 
-**Authentication** <br>
+Authentication
 Firebase Authentication handles user registration and login. It provides back-end services, SDKs and ready made UI libraries.
 The firebase console is configured to authenticate users via basic auth and using their Google email account.  <br>
 
@@ -47,48 +47,45 @@ The firebase console is configured to authenticate users via basic auth and usin
 In app navigation is handled using the toolbar.
 The navigation drawer element was planed to be present in the woodland list view but it wasn't fully implemented in time unfortunately
 
-
-<br>
-
-- Swipe-to-Delete <br>
+- Swipe-to-Delete 
    When a user swipes left it triggers a callback function located in the utils package. The 'id' is retrieved and removes the woods from both the recyclerView and the server.
 
-- Swipe-to-Edit <br>
+- Swipe-to-Edit 
    Similar to how the delete functions, when a user swipes right a callback edit function is triggered in the utils package. This callback navigates the user to the woodland view
-   ```
+   
 
-**Splash Screen** <br>
+**Splash Screen** 
 The Splash screen is the first screen visible to the user when the application is launched, it contains an animation sequence
-<br>
-**Persistent Storage** <br>
+
+**Persistent Storage** 
 Early iterations of this app utilised read/write to JSON file. Contents could be viewed via device file explorer inside Android Studio. <br>
 
-## UML Diagram
+UML Diagram
 
 
-## Developer Experience (DX)
-* Good use of Helpers for images and swipe functionality
-* Use of MVP architecture. Base classes implemented some commonality that were extracted from this MVP implementation.
+Developer Experience (DX)
+Good use of Helpers for images and swipe functionality
+Use of MVP architecture. Base classes implemented some commonality that were extracted from this MVP implementation.
 
-## GitHub
+GitHub
 I used a branch for assignment 1 and created another branch for assignment 2. Tagged releases at various stages, committed along the way
 
 
-## Personal Statement
+Personal Statement
 Due to time constraints, in November to early December for personal reasons, I needed to start as much of this assignment as early as possible to allow me to continue to completion for 23rd December.
 As such I used lecture notes and code available to me from previous years 2020, 2021 with the purpose of supplementing it to this years material
 I certify that this assignment is my own work, based on my personal study and research. To the best of my ability, I have acknowledged all the material and sources used in its preparation in the references.
 I also certify that this assignment has not previously been submitted for a previous assessment and that I have not plagiarised the work of other students and/or persons.
 
-## References
+References
  [Course Lectures and Code from 2020-2022]<br>
- [Google Custom Marker] https://developers.google.com/maps/documentation/android-sdk/marker#maps_android_markers_tag_sample-kotlin)<br>
- [Firebase Quickstart](https://github.com/firebase/quickstart-android) <br>
- [Case sensitivity](https://stackoverflow.com/questions/49349674/case-sensitivity-kotlin-ignorecase) <br>
- [How to Create a Splash Screen in Android using Kotlin](https://www.geeksforgeeks.org/how-to-create-a-splash-screen-in-android-using-kotlin/#:~:text=Android%20Splash%20Screen%20is%20the%20first%20screen%20visible,information%20about%20the%20company%20logo%2C%20company%20name%2C%20etc.) <br>
- [Bug Fix] (https://stackoverflow.com/questions/50080210/kotlin-type-mismatch-inferred-type-is-string-but-string-companion-was-expected)<br>
- [Excel Generation] (https://www.grapecity.com/blogs/how-to-generate-excel-files-with-kotlin)<br>
- [Use of Radio Buttons](https://youtu.be/2LWKXXLuNrk) <br>
- [Piechart](https://malcolmmaima.medium.com/kotlin-implementing-a-barchart-and-piechart-using-mpandroidchart-8c7643c4ba75)<br>
- [Kotlin docs](https://kotlinlang.org/docs/home.html) <br>
-##
+ [Google Custom Marker] https://developers.google.com/maps/documentation/android-sdk/marker#maps_android_markers_tag_sample-kotlin)
+ [Firebase Quickstart](https://github.com/firebase/quickstart-android) 
+ [Case sensitivity](https://stackoverflow.com/questions/49349674/case-sensitivity-kotlin-ignorecase) 
+ [How to Create a Splash Screen in Android using Kotlin](https://www.geeksforgeeks.org/how-to-create-a-splash-screen-in-android-using-kotlin/#:~:text=Android%20Splash%20Screen%20is%20the%20first%20screen%20visible,information%20about%20the%20company%20logo%2C%20company%20name%2C%20etc.)
+ [Bug Fix] (https://stackoverflow.com/questions/50080210/kotlin-type-mismatch-inferred-type-is-string-but-string-companion-was-expected)
+ [Excel Generation] (https://www.grapecity.com/blogs/how-to-generate-excel-files-with-kotlin)
+ [Use of Radio Buttons](https://youtu.be/2LWKXXLuNrk) 
+ [Piechart](https://malcolmmaima.medium.com/kotlin-implementing-a-barchart-and-piechart-using-mpandroidchart-8c7643c4ba75)
+ [Kotlin docs](https://kotlinlang.org/docs/home.html) 
+
