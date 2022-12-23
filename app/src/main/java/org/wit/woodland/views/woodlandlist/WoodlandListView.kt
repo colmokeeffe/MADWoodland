@@ -28,9 +28,13 @@ class WoodlandListView : BaseView(), WoodlandListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_woodland_list)
         super.init(toolbar, false)
-        //initDrawerNavigation(toolbarAdd, drawer_layout, navigation_view)
+        //comment out nav drawer until fix is found in layout activity_woodland_list
+        //initDrawerNavigation(toolbar, drawer_layout, navigation_view)
         presenter = initPresenter(WoodlandListPresenter(this)) as WoodlandListPresenter
         setSwipeRefresh()
+        //LayoutManager is responsible for measuring and positioning item views within a RecyclerView
+        // as well as determining the policy for when to recycle item views that are no longer visible to the user.
+        //required whenever recyclerView is used
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         presenter.loadWoodlands()

@@ -21,13 +21,15 @@ class LoginView : BaseView(), AnkoLogger
 {
     lateinit var startForResult : ActivityResultLauncher<Intent>
     lateinit var presenter: LoginPresenter
-    var fireStore: WoodlandFireStore? = null
+    //nor used now
+    // var fireStore: WoodlandFireStore? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         init(toolbar, false)
+        //create google button
         googleSignInButton.setSize(SignInButton.SIZE_WIDE)
-        googleSignInButton.setColorScheme(0)
+        googleSignInButton.setColorScheme(0)//initialize the presenter here
         presenter = initPresenter(LoginPresenter(this)) as LoginPresenter
         progressBar.visibility = View.GONE
 
@@ -51,7 +53,7 @@ class LoginView : BaseView(), AnkoLogger
                 presenter.doSignUp(email,password)
             }
         }
-
+//google sign in listener
         googleSignInButton.setOnClickListener {
             googleSignIn()
         }
@@ -69,7 +71,7 @@ class LoginView : BaseView(), AnkoLogger
         }
     }
 
-
+//check to ensure that this is working correctly
     private fun googleSignIn()
     {
         val signInIntent = presenter.googleSignInClient.value!!.signInIntent

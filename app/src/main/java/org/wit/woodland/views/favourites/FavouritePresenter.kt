@@ -9,7 +9,7 @@ import org.wit.woodland.views.BasePresenter
 import org.wit.woodland.views.BaseView
 import org.wit.woodland.views.VIEW
 
-
+//Presenter acts as a bridge that connects a Model and a View, serves in the middle
 class FavouritePresenter(view: BaseView): BasePresenter(view), AnkoLogger {
 
     fun doAddWoodland()

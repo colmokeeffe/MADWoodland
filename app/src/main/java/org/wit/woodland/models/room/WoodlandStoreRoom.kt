@@ -6,7 +6,7 @@ import org.wit.woodland.models.WoodlandModel
 import org.wit.woodland.models.WoodlandStore
 import org.wit.woodland.room.Database
 import org.wit.woodland.room.WoodlandDao
-
+//Data Access Objects (DAO) are classes where you define your database interactions.
 class WoodlandStoreRoom(val context: Context) : WoodlandStore
 {
     var dao: WoodlandDao

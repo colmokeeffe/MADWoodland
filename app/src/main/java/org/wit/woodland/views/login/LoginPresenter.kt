@@ -35,7 +35,7 @@ class LoginPresenter(view: BaseView) : BasePresenter(view)
             }
             configureGoogleSignIn()
         }
-
+//skip tthe login process
     fun doSkipLogin()
     {
         if (fireStore != null)
@@ -100,6 +100,7 @@ class LoginPresenter(view: BaseView) : BasePresenter(view)
                 }
             }
             else
+            //not logged in
             {
                 view?.hideProgress()
                 view?.toast("Sign up Failure: ${task.exception?.message}")

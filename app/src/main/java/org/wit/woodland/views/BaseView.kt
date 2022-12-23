@@ -1,5 +1,5 @@
 package org.wit.woodland.views
-
+//the parent view class
 
 import android.content.Intent
 import android.os.Parcelable

@@ -15,7 +15,7 @@ import org.wit.woodland.utils.SwipeToDeleteCallback
 import org.wit.woodland.utils.SwipeToEdit
 import org.wit.woodland.views.BaseView
 
-
+//favourite view to implement the UI for the fav page to be updated later to toggle between favs
 class FavouriteView : BaseView(), FavouriteListener
 {
     lateinit var presenter: FavouritePresenter

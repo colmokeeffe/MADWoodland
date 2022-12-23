@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.card_woodland.view.*
 import org.wit.woodland.R
 import org.wit.woodland.models.WoodlandModel
-
+//adapter acts as a bridge between the UI component and data sources
 interface FavouriteListener
 {
     fun onWoodlandClick(woodland: WoodlandModel)

@@ -6,7 +6,8 @@ import org.jetbrains.anko.info
 import org.wit.woodland.models.*
 import org.wit.woodland.models.firebase.WoodlandFireStore
 
-
+//entry point into the woodlands app
+//updated to use firebase
 class MainApp : Application(), AnkoLogger {
 
     lateinit var woodlands: WoodlandStore

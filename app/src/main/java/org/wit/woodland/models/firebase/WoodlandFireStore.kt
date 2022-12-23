@@ -14,7 +14,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 
 class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
-
+//inititialisation
     val woodlands = ArrayList<WoodlandModel>()
     lateinit var userId: String
     lateinit var db: DatabaseReference
@@ -23,7 +23,7 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
     override fun findAll(): List<WoodlandModel> {
         return woodlands
     }
-
+//query in the toolbar
     override fun findSearchResults(query: String): List<WoodlandModel> {
         val results = woodlands.filter{p-> p.title.contains(query)}
         return results
@@ -34,7 +34,7 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
         return favourites
     }
 
-
+//setting their woodland favourite
     override fun setFavourite(woodland: WoodlandModel) {
         var foundWoodland: WoodlandModel? = woodlands.find { p -> p.fbId == woodland.fbId }
         if (foundWoodland != null) {
@@ -42,7 +42,7 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
         }
         db.child("users").child(userId).child("woodlands").child(woodland.fbId).setValue(woodland)
     }
-
+//functions to use for piechart stats
     override fun countVisited(): Int {
         var count = 0
         for(woodland in woodlands){
@@ -97,12 +97,12 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
             db.child("users").child(userId).child("woodlands").child(key).setValue(woodland)
         }
     }
-
+//finding the woodland parameters by firebase id
     override fun findByFbId(id: String): WoodlandModel? {
         val foundWoodland: WoodlandModel? = woodlands.find { p -> p.fbId === id}
         return foundWoodland
     }
-
+//update woodland parameters using their fb ID
     override fun update(woodland: WoodlandModel) {
         var foundWoodland: WoodlandModel? = woodlands.find { p -> p.fbId == woodland.fbId }
         if (foundWoodland != null) {
@@ -139,7 +139,7 @@ class WoodlandFireStore(val context: Context) : WoodlandStore, AnkoLogger {
     override fun clear() {
         woodlands.clear()
     }
-
+//retrieving the users woodlands storage and database tied to their fb ID
     fun fetchWoodlands(woodlandsReady: () -> Unit) {
         val valueEventListener = object : ValueEventListener {
             override fun onCancelled(dataSnapshot: DatabaseError) {

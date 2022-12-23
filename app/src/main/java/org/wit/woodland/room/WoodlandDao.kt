@@ -2,7 +2,9 @@ package org.wit.woodland.room
 
 import androidx.room.*
 import org.wit.woodland.models.WoodlandModel
-
+//Data Access Objects (DAO) are classes where you define your database interactions.
+//The class marked with @Dao should either is an interface in this case,
+// At compile time, this room will generate an implementation of this class when it is referenced by the Database
 @Dao interface WoodlandDao
 {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

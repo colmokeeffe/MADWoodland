@@ -42,7 +42,7 @@ class EditLocationPresenter(view: BaseView): BasePresenter(view)
         view?.setResult(0, resultIntent)
         view?.finish()
     }
-
+//use tghe toString method for marker lat and lng detail
     fun doUpdateMarker(marker: Marker)
     {
         val loc = LatLng(location.lat, location.lng)
