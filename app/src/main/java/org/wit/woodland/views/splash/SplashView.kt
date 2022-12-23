@@ -23,6 +23,7 @@ class SplashView : BaseView()
         )
         val backgroundImage: ImageView = findViewById(R.id.imageView)
         val slideAnimation = AnimationUtils.loadAnimation(this, R.anim.side_slide)
+        //passing in the animation id side_slide to move image id imageView from left to right by 50%
         backgroundImage.startAnimation(slideAnimation)
         presenter = initPresenter(SplashPresenter(this)) as SplashPresenter
 
@@ -31,6 +32,6 @@ class SplashView : BaseView()
             presenter.doShowLogin()
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
-        }, 3000)
+        }, 3000)// set delay 3sec before fade_out to doShowLogin()
     }
 }

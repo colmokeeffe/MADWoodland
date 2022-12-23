@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import kotlinx.android.synthetic.main.activity_woodland.*
 import kotlinx.android.synthetic.main.activity_woodland_list.*
 import org.jetbrains.anko.info
 import org.wit.woodland.R
@@ -27,6 +28,7 @@ class WoodlandListView : BaseView(), WoodlandListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_woodland_list)
         super.init(toolbar, false)
+        //initDrawerNavigation(toolbarAdd, drawer_layout, navigation_view)
         presenter = initPresenter(WoodlandListPresenter(this)) as WoodlandListPresenter
         setSwipeRefresh()
         val layoutManager = LinearLayoutManager(this)

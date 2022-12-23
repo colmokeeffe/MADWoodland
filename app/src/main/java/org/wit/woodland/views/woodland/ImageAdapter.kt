@@ -24,7 +24,7 @@ class ImageAdapter constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder
     {
         return MainHolder(
-            LayoutInflater.from(parent?.context).inflate(
+            LayoutInflater.from(parent.context).inflate(
                 R.layout.card_images,
                 parent,
                 false
@@ -45,7 +45,7 @@ class ImageAdapter constructor(
         fun bind(image: String, listener: ImageListener)
         {
             Glide.with(itemView.context).load(image).into(itemView.woodlandMultipleImages);
-            itemView.imagedeletebutton.setOnClickListener() {listener.onDeleteClick(image)}
+            itemView.imagedeletebutton.setOnClickListener{listener.onDeleteClick(image)}
         }
     }
 }

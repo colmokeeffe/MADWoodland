@@ -1,37 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:showIn="navigation_view">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/diyFragment"
+            android:id="@+id/woodlandNew"
             android:icon="@drawable/ic_menu_new"
             android:title="New Woodland" />
         <item
-            android:id="@+id/diyListFragment"
+            android:id="@+id/woodlandList"
             android:icon="@drawable/ic_menu_list"
             android:title="Woodlands List" />
-    </group>
-
-    <item android:title="Communication">
-        <menu>
 
             <item
-                android:id="@+id/aboutusFragment"
+                android:id="@+id/share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
-        </menu>
-    </item>
 
-    <item android:title="Account">
-        <menu>
             <item
                 android:id="@+id/nav_sign_out"
                 android:icon="@android:drawable/ic_menu_revert"
                 android:onClick="signOut"
                 android:title="Sign Out" />
-        </menu>
-    </item>
+    </group>
 </menu>

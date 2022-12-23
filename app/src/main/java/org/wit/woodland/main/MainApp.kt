@@ -10,9 +10,9 @@ import org.wit.woodland.models.firebase.WoodlandFireStore
 class MainApp : Application(), AnkoLogger {
 
     lateinit var woodlands: WoodlandStore
-
-
-    override fun onCreate() {
+    //entry pointy into woodlands a
+    override fun onCreate()
+    {
         super.onCreate()
         woodlands = WoodlandFireStore(applicationContext)
         info("Woodland started")

@@ -32,6 +32,7 @@ class WoodlandView : BaseView(), AnkoLogger, ImageListener
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_woodland)
     super.init(toolbarAdd, true)
+
     mapView.onCreate(savedInstanceState);
     mapView.getMapAsync {
       map = it

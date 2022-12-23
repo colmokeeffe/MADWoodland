@@ -3,9 +3,16 @@ package org.wit.woodland.views
 
 import android.content.Intent
 import android.os.Parcelable
+import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.AnkoLogger
+import org.wit.woodland.R
 import org.wit.woodland.models.Location
 import org.wit.woodland.models.WoodlandModel
 import org.wit.woodland.views.favourites.FavouriteView
@@ -64,6 +71,42 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }
+
+    fun initDrawerNavigation(toolbar: Toolbar, drawerLayout: DrawerLayout, navigationView: NavigationView) {
+        val drawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
+            this, drawerLayout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        ){
+            override fun onDrawerOpened(drawerView: View) {
+                super.onDrawerOpened(drawerView)
+
+            }
+        }
+        drawerToggle.isDrawerIndicatorEnabled = true
+        drawerLayout.addDrawerListener((drawerToggle))
+        drawerToggle.syncState()
+
+        navigationView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.woodlandNew -> navigateTo(VIEW.WOODLAND)
+                R.id.woodlandList-> navigateTo(VIEW.LIST)
+                R.id.share -> navigateTo(VIEW.WOODLAND)
+                R.id.nav_sign_out ->
+                {
+                    FirebaseAuth.getInstance().signOut()
+                    navigateTo(VIEW.LOGIN)
+                }
+
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+
+        }
+
+    }
+
+
 
    /* private lateinit var appBarConfiguration: AppBarConfiguration
     fun onCreate(toolbar: Toolbar, upEnabled: Boolean) {

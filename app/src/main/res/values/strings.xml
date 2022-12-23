@@ -70,4 +70,6 @@
     <string name="menu_shareWoodland">Share</string>
     <string name="open_nav">navigation_view_opened</string>
     <string name="close_nav">navigation_view_closed</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="navigation_drawer_open">Open</string>
 </resources>
