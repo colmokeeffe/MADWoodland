@@ -57,14 +57,14 @@ The navigation drawer element was planed to be present in the woodland list view
    Similar to how the delete functions, when a user swipes right a callback edit function is triggered in the utils package. This callback navigates the user to the woodland view
    ```
 
-**Splash Screen** <br>
+**Splash Screen**
 The Splash screen is the first screen visible to the user when the application is launched, it contains an animation sequence
 <br>
-**Persistent Storage** <br>
+**Persistent Storage**
 Early iterations of this app utilised read/write to JSON file. Contents could be viewed via device file explorer inside Android Studio. <br>
 
 ## UML Diagram
-
+<img src="/app/src/UML/UML.jpg" width="800" height="600"/><br>
 
 ## Developer Experience (DX)
 * Good use of Helpers for images and swipe functionality
